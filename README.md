@@ -1,6 +1,7 @@
 # capcut-mcp-server
 
 [![GitHub repo](https://img.shields.io/badge/GitHub-capcut--mcp--server-181717?logo=github)](https://github.com/goransmoljanovic015-cell/capcut-mcp-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A local MCP (Model Context Protocol) server that lets Claude drive CapCut/Jianying
 video editing — create a draft, add text/video/audio/image tracks, subtitles,

@@ -2,6 +2,7 @@
   "name": "capcut-mcp-server",
   "version": "1.0.0",
   "description": "MCP server that lets Claude drive CapCut/Jianying video editing (drafts, text, video/audio/image tracks, effects, keyframes) via the local VectCutAPI HTTP backend.",
+  "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
