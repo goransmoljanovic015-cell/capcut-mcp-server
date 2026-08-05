@@ -107,7 +107,6 @@ Desktop or Claude Code (above) are the supported paths.
 | `capcut_add_effect` | Apply a visual effect/filter over a time range. |
 | `capcut_add_sticker` | Place a sticker asset. |
 | `capcut_add_video_keyframe` | Add property keyframes (scale/position/rotation/alpha) for animation. |
-| `capcut_get_video_duration` | Probe a video's duration (read-only). |
 | `capcut_save_draft` | Save/finalize the draft. Call this last. |
 
 Every `add_*` tool accepts an `extra_params` object as an escape hatch for any

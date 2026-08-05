@@ -123,7 +123,14 @@ export const AddEffectSchema = z
     start: z.number().min(0).default(0).describe("Start time in seconds within the timeline."),
     end: z.number().positive().optional().describe("End time in seconds within the timeline."),
     duration: z.number().positive().optional().describe("Effect duration in seconds, as an alternative to start/end."),
-    parameters: z.record(z.string(), z.unknown()).optional().describe("Effect-specific parameters (varies by effect_type)."),
+    params: z
+      .array(z.number().nullable())
+      .default([])
+      .describe(
+        "Effect-specific numeric parameters, in the order VectCutAPI's effect definition expects (varies by " +
+          "effect_type). Use null for an item to fall back to its default value. Defaults to an empty array " +
+          "(all defaults) rather than being omitted — the VectCutAPI backend crashes if this field is absent."
+      ),
     extra_params: extraParams
   })
   .strict();
@@ -153,12 +160,6 @@ export const AddVideoKeyframeSchema = z
     times: z.array(z.number().min(0)).min(1).describe("Keyframe timestamps in seconds. Must be the same length as each value list."),
     values: z.array(z.string()).min(1).describe("Keyframe values (as strings) matching each timestamp in `times`."),
     extra_params: extraParams
-  })
-  .strict();
-
-export const GetVideoDurationSchema = z
-  .object({
-    video_url: z.string().url().describe("Publicly reachable URL (or local path supported by the backend) of the video to inspect.")
   })
   .strict();
 

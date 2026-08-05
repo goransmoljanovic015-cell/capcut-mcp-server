@@ -30,7 +30,6 @@ import {
   AddEffectSchema,
   AddStickerSchema,
   AddVideoKeyframeSchema,
-  GetVideoDurationSchema,
   SaveDraftSchema
 } from "./schemas.js";
 
@@ -250,7 +249,7 @@ Args:
   - draft_id (string, required): From capcut_create_draft.
   - effect_type (string, required): Effect/filter identifier.
   - start (number, seconds), end or duration: Time range the effect is active.
-  - parameters (object): Effect-specific parameters (varies by effect_type).
+  - params (number[]): Effect-specific numeric parameters, in the order VectCutAPI's effect definition expects (varies by effect_type); use null for an item to fall back to its default.
   - extra_params: Any additional VectCutAPI field not modeled above.
 
 Returns: JSON confirming the effect was added.`,
@@ -295,20 +294,6 @@ Returns: JSON confirming the keyframes were added.
 Example: animate a zoom-in — property_types=['scale_x','scale_y'], times=[0,2], values=['1.0','1.5'].`,
   AddVideoKeyframeSchema,
   { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true }
-);
-
-registerCapCutTool(
-  "capcut_get_video_duration",
-  "get_video_duration",
-  "Get Video Duration",
-  `Probe a video file/URL and return its duration in seconds, without modifying any draft. Useful before calling capcut_add_video to pick sensible start/end values.
-
-Args:
-  - video_url (string, required): URL or local path of the video to inspect.
-
-Returns: JSON including the duration in seconds.`,
-  GetVideoDurationSchema,
-  { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true }
 );
 
 registerCapCutTool(
